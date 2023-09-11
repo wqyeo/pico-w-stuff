@@ -45,11 +45,10 @@ int main() {
         }
 
         if (pseudoButtonState){
-            uart_putc_raw(UART_ID, '1');
             isSendingFlag = 0; // Send it once only...
+            uart_putc_raw(UART_ID, '1');
         } else {
             uart_putc_raw(UART_ID, nextCharSend);
-            nextCharSend = nextCharSend + 1; // Cycle to the next character...
         } 
 
         if (uart_is_readable(UART_ID))
@@ -59,6 +58,7 @@ int main() {
                 printf("2\n"); // print '2' when '1' is received.
             } else {
                 printf("%c", receivedChar + 32); // '+ 32' to convert to lowercase.
+                nextCharSend = nextCharSend + 1; // Cycle to the next character...
             }
         }
         
