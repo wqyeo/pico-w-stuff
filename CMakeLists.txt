@@ -15,3 +15,4 @@ pico_sdk_init()
 
 add_subdirectory(blink_test)
 add_subdirectory(lab2)
+add_subdirectory(lab3)
